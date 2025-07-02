@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
@@ -21,10 +21,6 @@ export default function Username() {
                 displayName: name,
             }
             await updateName(user, profile);
-            await setDoc(doc(db, "users", currentUser.uid), {
-                Todos: {
-                }
-            });
             console.log(currentUser);
             navigate("/")
         } catch (error) {

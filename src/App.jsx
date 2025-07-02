@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register"
 import ProtectedRoute from "./context/ProtectedRoute";
 import AuthProvider from "./context/AuthContext";
+import Username from "./pages/Username";
 // import Clubs from "./pages/Clubs";
 
 function App() {
@@ -21,12 +22,11 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<ProtectedRoute>
-            <Home />
-          </ProtectedRoute>} />
-          <Route path="/home" element={<ProtectedRoute>
-            <Home />
-          </ProtectedRoute>} />
+          <Route path="/username" element={<Username />} />
+          <Route path="/" element={
+            <Home />} />
+          <Route path="/home" element={
+            <Home />} />
           <Route path="/problems" element={<ProtectedRoute>
             <Problems />
           </ProtectedRoute>} />

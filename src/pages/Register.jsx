@@ -56,7 +56,7 @@ export default function Register() {
                             <label htmlFor="confirm-password">Re-enter the Password:</label>
                             <input type="password" name="confirm-password" placeholder="Confirm Password" autoComplete="current-password" id="confirm-password" value={confirmpassword} className="bg-white focus:outline-2 outline-offset-2 rounded-md w-80 text-black outline-white p-2 border-2 border-black" onChange={(e) => setConfirmPassword(e.target.value)} />
                         </div>
-                        <button onClick={Register} className="bg-orange-400 text-indigo-950 rounded-xl p-2 border-2 border-white m-2 cursor-pointer active:outline-2 outline-amber-700">Register</button>
+                        <button onClick={HandleRegister} className="bg-orange-400 text-indigo-950 rounded-xl p-2 border-2 border-white m-2 cursor-pointer active:outline-2 outline-amber-700">Register</button>
                         <p className="font-bold text-center">Don't have an account? <Link to="/login" className="underline-offset-1 underline cursor-pointer text-white">Login</Link></p>
                     </form>
                 </div>
