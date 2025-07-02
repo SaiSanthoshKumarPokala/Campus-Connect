@@ -8,7 +8,7 @@ import LostAndFound from "./pages/LostAndFound";
 import Official from "./pages/Official";
 import Login from "./pages/Login";
 import Register from "./pages/Register"
-import ProtectedRoute from "./context/ProtectedRoute";
+import ProtectedRoute from "../utils/ProtectedRoute";
 import AuthProvider from "./context/AuthContext";
 import Username from "./pages/Username";
 // import Clubs from "./pages/Clubs";

@@ -2,6 +2,7 @@ import { UserCircleIcon, HandThumbUpIcon, HandThumbDownIcon, ChatBubbleLeftEllip
 import { useEffect, useState } from "react"
 
 
+
 export default function Posts(props) {
 
     const [likeActive, setlikeActive] = useState(false);

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { PaperAirplaneIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 import { v4 as uuid } from "uuid";
+import Bot from "/public/Bot.jpg";
 
 export default function ChatBot() {
 
@@ -32,7 +33,7 @@ export default function ChatBot() {
                     <div className="chat w-72 h-96 -left-60 absolute bottom-16 animate-[appear_0.5s_linear]">
                         <div className="sticky p-2 top-0 flex flex-row items-center justify-between bg-white rounded-t-xl">
                             <img
-                                src="src\assets\images\Bot.jpg"
+                                src={Bot}
                                 alt="Chatbot"
                                 className="rounded-full brightness-150 size-10"
                             />
@@ -54,7 +55,7 @@ export default function ChatBot() {
                                             </div>
                                             <div className="flex flex-row-reverse items-center">
                                                 <img
-                                                    src="src\assets\images\Bot.jpg"
+                                                    src={Bot}
                                                     alt="Chatbot"
                                                     className="rounded-full brightness-150 size-6"
                                                 />
@@ -92,7 +93,7 @@ export default function ChatBot() {
                 {!isopen &&
                     <button className="bg-black rounded-full w-14 h-14 flex items-center justify-center shadow-[0_0_10px_8px_rgba(255,255,255,0.5)] cursor-pointer animate-bounce transition-all duration-500" onClick={()=>{setisOpen(true)}}>
                         <img
-                            src="src\assets\images\Bot.jpg"
+                            src={Bot}
                             alt="Chatbot"
                             className="object-contain rounded-full brightness-150"
                         />

@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
+import Logo from "/public/logo.png"
 export default function Navbar() {
 
     const [isOpen, setisOpen] = useState(false)
@@ -35,8 +36,8 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="flex flex-row justify-between px-4 md:px-2 py-2 md:py-0 md:justify-evenly text-center z-10 items-center-safe bg-orange-400 sticky top-0">
-                <NavLink to="/home"><img src="src\assets\images\logo.png" alt="Logo" className="w-12 sm:w-16 h-auto rounded-full" /></NavLink>
+            <nav className="flex flex-row justify-between px-4 md:px-2 py-4 md:py-0 md:justify-evenly text-center z-10 items-center-safe bg-orange-400 sticky top-0">
+                <NavLink to="/home"><img src={Logo} alt="Logo" className="w-12 sm:w-16 h-auto rounded-full" /></NavLink>
                 {currentUser &&
                     <div className="hidden sm:p-4 md:block">
                         <ul className="flex flex-row items-center-safe list-none text-white">

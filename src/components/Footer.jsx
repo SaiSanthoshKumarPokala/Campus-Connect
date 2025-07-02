@@ -1,9 +1,11 @@
+import Logo from "/public/logo.png"
+
 export default function Footer() {
     return (
         <>
             <div className="bg-orange-400 p-2 flex flex-col-reverse items-center justify-around md:flex-row sticky bottom-0">
                 <div className="flex items-center">
-                    <img src="src\assets\images\logo.png" alt="Logo" className="w-10 rounded-full" />
+                    <img src={Logo} alt="Logo" className="w-10 rounded-full" />
                     <p className="font-bold text-white text-xs sm:text-xl p-2">Campus Connect 2025 &copy; All rights reserved</p>
                 </div>
                 <div className="flex items-center">

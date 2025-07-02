@@ -3,13 +3,15 @@ import Carousel from "../components/Carousel"
 import Notices from "../components/Notices"
 import { ArrowRightIcon } from "@heroicons/react/24/solid"
 import ChatBot from "../components/Chatbot";
+import BG from "/public/bg.jpeg"
+
 
 
 export default function Home() {
     return (
         <>
             <title>Home</title>
-            <img src="src/assets/images/bg.jpeg" alt="" className="fixed h-dvh w-[2000px] object-cover md:object-fill md:w-dvw md:h-auto opacity-50 blur-xs" />
+            <img src={BG} alt="" className="fixed h-dvh w-[2000px] object-cover md:object-fill md:w-dvw md:h-auto opacity-50 blur-xs" />
             <div className="min-h-dvh relative flex flex-col items-center gap-4">
                 <div className="border-2 border-orange-500 p-2 mt-2 w-9/12 rounded-md bg-black overflow-hidden transition-all">
                     <p className="font-bold text-orange-400 text-sm md:text-xl text-shadow-[0_0px_10px_rgb(233, 213, 255)] animate-[slide_10s_linear_infinite_running] md:animate-[slide_15s_linear_infinite_running] hover:animate-[slide_15s_linear_infinite_paused] ">Do you agree with this? <NavLink to="/problems" className="underline underline-offset-2">But What?</NavLink></p>
