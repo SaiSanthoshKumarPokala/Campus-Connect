@@ -1,5 +1,5 @@
 import Team from "../components/Team"
-import ChatBot from "../components/chatbot"
+import ChatBot from "../components/Chatbot"
 
 export default function About() {
 

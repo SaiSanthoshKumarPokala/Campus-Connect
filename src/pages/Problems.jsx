@@ -46,25 +46,29 @@ export default function Problems() {
     }
 
     const Post = () => {
-        verref.current.showModal()
+        // verref.current.showModal()
+        setproblems([...problems, { id: uuidv4(), problem: problem, category: category, likes: likes, dislikes: dislikes }]);
+        setproblem("");
+        console.log(problems)
     }
 
     const selectValue = (e) => {
         setCategory(e.target.value)
     }
 
-    const VerificationSuccess = () => {
-        setproblems([...problems, { id: uuidv4(), problem: problem, category: category, likes: likes, dislikes: dislikes}]);
-        setproblem("");
-        console.log(problems)
-        saveToLS();
-        verref.current.close()
-    }
+    // const VerificationSuccess = () => {
+    //     setproblems([...problems, { id: uuidv4(), problem: problem, category: category, likes: likes, dislikes: dislikes }]);
+    //     setproblem("");
+    //     console.log(problems)
+    //     saveToLS();
+    //     verref.current.close()
+    // }
 
 
 
     const ToggleLike = (e, id) => {
-        console.log(id);
+        let index = problems.findIndex((item) => item.id === id);
+        console.log(problems[index]);
         if (likeActive) {
             setlikeActive(false);
             likes > 0 ? setlikes(likes - 1) : setlikes(0);
@@ -128,7 +132,7 @@ export default function Problems() {
                         {problems.map(items => {
                             return (
                                 <div key={items.id} className="w-80 sm:w-9/12 h-auto border-2 border-slate-400 rounded-2xl shadow-xl sticky top-20 bg-slate-100">
-                                    <div className="flex flex-row items-center gap-2 border-b-2 border-slate-400">
+                                    {/* <div className="flex flex-row items-center gap-2 border-b-2 border-slate-400">
                                         <UserCircleIcon className="size-12 fill-slate-600" />
                                         <p className="text-xl">Anonymous</p>
                                     </div>
@@ -137,7 +141,7 @@ export default function Problems() {
                                     </div>
                                     <div className="reactions flex flex-row gap-6 sm:gap-10 items-center justify-center m-auto border-t-2 border-slate-300">
                                         <div className="flex flex-row items-center gap-1">
-                                            <button className="cursor-pointer" onClick={(e)=>ToggleLike(e, items.id)} >
+                                            <button className="cursor-pointer" onClick={(e) => ToggleLike(e, items.id)} >
                                                 <HandThumbUpIcon className={`size-6 sm:size-8 ${likeActive ? "fill-green-600 stroke-green-600" : "fill-none stroke-black"}`} />
                                             </button>
                                             <b>{items.likes}</b>
@@ -149,12 +153,13 @@ export default function Problems() {
                                             <b>Comment</b>
                                         </div>
                                         <div className="flex flex-row gap-1">
-                                            <button className="cursor-pointer" onClick={(e)=>ToggleDisLike(e, items.id)}>
+                                            <button className="cursor-pointer" onClick={(e) => ToggleDisLike(e, items.id)}>
                                                 <HandThumbDownIcon className={`size-6 sm:size-8 ${dislikeActive ? "fill-red-600 stroke-red-600" : "fill-none stroke-black"}`} />
                                             </button>
                                             <b>{items.dislikes}</b>
                                         </div>
-                                    </div>
+                                    </div> */}
+                                    <Posts Content={items.problem} id={items.id}/>
                                 </div>
                             )
                         })
@@ -196,7 +201,7 @@ export default function Problems() {
                 <p>
                     <b>Note: </b>We use your roll number just to verify that you are this college student. We don't save it.
                 </p>
-                <button type="submit" className="flex justify-center border-2 rounded-xl border-white m-auto hover:border-2 hover:border-black hover:bg-white p-2 hover:cursor-pointer" onClick={VerificationSuccess}>
+                <button type="submit" className="flex justify-center border-2 rounded-xl border-white m-auto hover:border-2 hover:border-black hover:bg-white p-2 hover:cursor-pointer" onClick={Post}>
                     Submit
                 </button>
             </dialog>

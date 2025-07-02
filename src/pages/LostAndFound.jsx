@@ -1,4 +1,4 @@
-import { useEffect, useRef , useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 import { v4 as uuidv4 } from 'uuid';
 import ChatBot from "../components/Chatbot";
@@ -38,7 +38,7 @@ export default function LostAndFound() {
 
     useEffect(() => {
         saveToLS();
-    }, [lostitems,founditems]);
+    }, [lostitems, founditems]);
 
 
     const SubmitLost = (e) => {
@@ -52,7 +52,7 @@ export default function LostAndFound() {
         setYear(1);
         setLostitem("");
     }
-    
+
     const SubmitFound = (e) => {
         e.preventDefault();
         setFounditems([...founditems, { id: uuidv4(), Name: name, Year: year, Department: dept, Description: desc, Founditem: founditem, Photo: photo }]);
@@ -71,10 +71,10 @@ export default function LostAndFound() {
             <title>Lost and Found</title>
             <div className="min-h-dvh">
                 {/* Lost */}
-                <div className="flex md:flex-row md:justify-evenly flex-col items-center justify-center sticky top-0 bg-orange-300 z-10">
+                <div className="flex flex-row justify-evenly items-center md:sticky md:top-0 bg-green-500 z-10">
                     <div className="flex flex-row gap-2 items-center justify-center m-4">
                         <p className="text-center">Lost an item?</p>
-                        <button type="button" className="border-2 hover:bg-green-400 rounded-md cursor-pointer border-black bg-white p-2" onClick={() => { lost.current.showModal() }}>Click here</button>
+                        <button type="button" className="border-2 hover:bg-orange-400 rounded-md cursor-pointer border-black bg-white p-2" onClick={() => { lost.current.showModal() }}>Click here</button>
                     </div>
                     <dialog ref={lost} className="m-auto p-6 rounded-md backdrop:bg-orange-300/70">
                         <form action="">
@@ -82,16 +82,16 @@ export default function LostAndFound() {
                                 <div className="flex flex-row items-center justify-end">
                                     <p>Close</p>
                                     <button type="button" className="cursor-pointer" onClick={() => { lost.current.close() }}>
-                                        <XCircleIcon className="size-8" />
+                                        <XCircleIcon className="size-8 cursor-pointer hover:rotate-90 transition-all ease-in duration-400 hover:scale-105 hover:fill-red-500 hover:stroke-white" />
                                     </button>
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Name">Name: </label>
-                                    <input type="text" name="" id="Name" value={name} onChange={(e) => setName(e.target.value)} className="border-b-2 border-b-amber-400" />
+                                    <input type="text" name="" id="Name" value={name} onChange={(e) => setName(e.target.value)} className="border-b-2 focus:outline-none border-b-amber-400" />
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Year">Year: </label>
-                                    <select name="" id="Year" value={year} onChange={(e) => setYear(e.target.value)}>
+                                    <select name="" id="Year" className="focus:outline-none" value={year} onChange={(e) => setYear(e.target.value)}>
                                         <option value="1st">1st</option>
                                         <option value="2nd">2nd</option>
                                         <option value="3rd">3rd</option>
@@ -100,7 +100,7 @@ export default function LostAndFound() {
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Department">Department: </label>
-                                    <select name="" id="Department" value={dept} onChange={(e) => setDept(e.target.value)}>
+                                    <select name="" id="Department" className="focus:outline-none" value={dept} onChange={(e) => setDept(e.target.value)}>
                                         <option value="CSE">CSE</option>
                                         <option value="ECE">ECE</option>
                                         <option value="EEE">EEE</option>
@@ -109,15 +109,15 @@ export default function LostAndFound() {
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Description">Description: </label>
-                                    <input type="text" name="" id="Description" value={desc} onChange={(e) => setDesc(e.target.value)} className="border-b-2 border-b-amber-400" />
+                                    <input type="text" name="" id="Description" value={desc} onChange={(e) => setDesc(e.target.value)} className="focus:outline-none border-b-2 border-b-amber-400" />
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="LostItem">Lost Item: </label>
-                                    <input type="text" name="" id="LostItem" value={lostitem} onChange={(e) => setLostitem(e.target.value)} className="border-b-2 border-b-amber-400" />
+                                    <input type="text" name="" id="LostItem" value={lostitem} onChange={(e) => setLostitem(e.target.value)} className="focus:outline-none border-b-2 border-b-amber-400" />
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Photo">Photo: </label>
-                                    <input type="file" name="Photo" id="Photo" accept="image/*" className="" onChange={(e)=>{setPhoto(e.target)}} />
+                                    <input type="file" name="Photo" id="Photo" accept="image/*" className="focus:outline-none" onChange={(e) => { setPhoto(e.target) }} />
                                 </div>
                                 <div className="text-center">
                                     <button type="submit" className="p-2 rounded-md border-2 cursor-pointer border-black" onClick={SubmitLost}>Submit</button>
@@ -129,24 +129,24 @@ export default function LostAndFound() {
                     {/* Found */}
                     <div className="flex flex-row gap-2 items-center justify-center m-4">
                         <p className="text-center">Found an item?</p>
-                        <button type="button" className="border-2 rounded-md cursor-pointer hover:bg-green-400 border-black bg-white p-2" onClick={() => { found.current.showModal() }}>Click here</button>
+                        <button type="button" className="border-2 rounded-md cursor-pointer hover:bg-orange-400 border-black bg-white p-2" onClick={() => { found.current.showModal() }}>Click here</button>
                     </div>
-                    <dialog ref={found} className="m-auto p-6 rounded-md backdrop:bg-orange-300/70">
+                    <dialog ref={found} className="m-auto p-6 rounded-md backdrop:bg-white/60 backdrop-blur-3xl">
                         <form action="">
                             <div className="flex flex-col gap-4">
                                 <div className="flex flex-row items-center justify-end">
                                     <p>Close</p>
                                     <button type="button" className="cursor-pointer" onClick={() => { found.current.close() }}>
-                                        <XCircleIcon className="size-8" />
+                                        <XCircleIcon className="size-8 cursor-pointer hover:rotate-90 transition-all ease-in duration-400 hover:scale-105 hover:fill-red-500 hover:stroke-white" />
                                     </button>
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Name">Name: </label>
-                                    <input type="text" name="" id="Name" value={name} className="border-b-2 border-b-amber-400" onChange={(e) => setName(e.target.value)} />
+                                    <input type="text" name="" id="Name" value={name} className="border-b-2 border-b-amber-400 focus:outline-none" onChange={(e) => setName(e.target.value)} />
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Year">Year: </label>
-                                    <select name="" id="Year" value={year} onChange={(e) => setYear(e.target.value)}>
+                                    <select name="" id="Year" className="focus:outline-none" value={year} onChange={(e) => setYear(e.target.value)}>
                                         <option value="1st">1st</option>
                                         <option value="2nd">2nd</option>
                                         <option value="3rd">3rd</option>
@@ -155,7 +155,7 @@ export default function LostAndFound() {
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Department">Department: </label>
-                                    <select name="" id="Department" value={dept} onChange={(e) => setDept(e.target.value)}>
+                                    <select name="" id="Department" className="focus:outline-none" value={dept} onChange={(e) => setDept(e.target.value)}>
                                         <option value="CSE">CSE</option>
                                         <option value="ECE">ECE</option>
                                         <option value="EEE">EEE</option>
@@ -164,15 +164,15 @@ export default function LostAndFound() {
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Description">Description: </label>
-                                    <input type="text" name="" id="Description" value={desc} onChange={(e) => setDesc(e.target.value)} className="border-b-2 border-b-amber-400" />
+                                    <input type="text" name="" id="Description" value={desc} onChange={(e) => setDesc(e.target.value)} className="focus:outline-none border-b-2 border-b-amber-400" />
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="FoundItem">Found Item: </label>
-                                    <input type="text" name="" id="FoundItem" value={founditem} onChange={(e) => setFounditem(e.target.value)} className="border-b-2 border-b-amber-400" />
+                                    <input type="text" name="" id="FoundItem" value={founditem} onChange={(e) => setFounditem(e.target.value)} className="border-b-2 focus:outline-none border-b-amber-400" />
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <label htmlFor="Photo">Photo: </label>
-                                    <input type="file" name="Photo" id="Photo" accept="image/*" className="" />
+                                    <input type="file" name="Photo" id="Photo" accept="image/*" className="focus:outline-none" />
                                 </div>
                                 <div className="text-center">
                                     <button type="submit" className="p-2 rounded-md cursor-pointer border-2 border-black" onClick={SubmitFound}>Submit</button>
@@ -185,36 +185,40 @@ export default function LostAndFound() {
 
 
                 <p className="text-center mt-4 font-serif text-3xl font-bold text-white">Lost items</p>
-                <table className="w-11/12 border-2 border-black m-auto table-fixed mt-2 mb-8">
-                    <thead>
-                        <tr className="odd:bg-green-300 even:bg-green-400">
-                            <th className="border-2 border-black p-2">Name</th>
-                            <th className="border-2 border-black p-2">Lost item</th>
-                            <th className="border-2 border-black p-2">Description</th>
-                            <th className="border-2 border-black p-2">Image</th>
-                            <th className="border-2 border-black p-2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {lostitems.map(items => {
-                            return (
-                                <tr className="odd:bg-green-300 even:bg-green-400" key={items.id}>
-                                    <td className="p-2 border-2 border-black">{items.Name}</td>
-                                    <td className="p-2 border-2 border-black">{items.Lostitem}</td>
-                                    <td className="p-2 border-2 border-black">{items.Description}</td>
-                                    <td className="p-2 border-2 border-black"></td>
-                                    <td className="p-2 border-2 border-black">Found this item?<a href="https://wa.me/916301014568">Click here</a></td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <div className="w-11/12 lg:overflow-clip overflow-x-scroll m-auto">
+                    <table className="w-[1200px] lg:w-11/12 border-2 border-black m-auto table-fixed mt-2 mb-8">
+                        <thead>
+                            <tr className="bg-green-500">
+                                <th className="border-2 border-black p-2">Name</th>
+                                <th className="border-2 border-black p-2">Lost item</th>
+                                <th className="border-2 border-black p-2">Description</th>
+                                <th className="border-2 border-black p-2">Image</th>
+                                <th className="border-2 border-black p-2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {lostitems.map(items => {
+                                return (
+                                    <tr className="odd:bg-white even:bg-green-300" key={items.id}>
+                                        <td className="p-2 border-2 border-black">{items.Name}</td>
+                                        <td className="p-2 border-2 border-black">{items.Lostitem}</td>
+                                        <td className="p-2 border-2 border-black">{items.Description}</td>
+                                        <td className="p-2 border-2 border-black"></td>
+                                        <td className="p-2 border-2 border-black">Found this item? <a href="https://wa.me/916301014568" className="underline underline-offset-2">Click here</a></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
 
 
                 <p className="text-center mt-4 font-serif text-3xl font-bold text-white">Found items</p>
-                <table className="w-11/12 border-2 border-black m-auto table-fixed mt-2 mb-4">
+                                <div className="w-11/12 lg:overflow-clip overflow-x-scroll m-auto">
+
+                <table className="w-[1200px] lg:w-11/12 border-2 border-black m-auto table-fixed mt-2 mb-4">
                     <thead>
-                        <tr className="odd:bg-green-300 even:bg-green-400">
+                        <tr className="bg-green-500">
                             <th className="border-2 border-black p-2">Name</th>
                             <th className="border-2 border-black p-2">Found item</th>
                             <th className="border-2 border-black p-2">Description</th>
@@ -225,21 +229,20 @@ export default function LostAndFound() {
                     <tbody>
                         {founditems.map(items => {
                             return (
-                                <tr className="odd:bg-green-300 even:bg-green-400" key={items.id}>
+                                <tr className="odd:bg-white even:bg-green-300" key={items.id}>
                                     <td className="p-2 border-2 border-black">{items.Name}</td>
                                     <td className="p-2 border-2 border-black">{items.Founditem}</td>
                                     <td className="p-2 border-2 border-black">{items.Description}</td>
                                     <td className="p-2 border-2 border-black"></td>
-                                    <td className="p-2 border-2 border-black">Lost this item?<a href="https://wa.me/916301014568">Click here</a></td>
+                                    <td className="p-2 border-2 border-black">Lost this item? <a href="https://wa.me/916301014568" className="underline underline-offset-2">Click here</a></td>
                                 </tr>
                             )
                         })}
                     </tbody>
                 </table>
+                </div>
             </div>
             <ChatBot />
         </>
-
-
     )
 }; 

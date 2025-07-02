@@ -23,9 +23,9 @@ export default function Posts(props) {
         localStorage.setItem("Reactions", JSON.stringify(reactions));
     }
 
-    useEffect(() => {
-        saveToLS();
-    }, [problems])
+    // useEffect(() => {
+    //     saveToLS();
+    // }, [problems])
 
 
 
@@ -61,7 +61,7 @@ export default function Posts(props) {
 
     return (
         <>
-            <div className="w-80 sm:w-9/12 h-auto border-2 border-slate-400 rounded-2xl shadow-xl sticky top-20 bg-slate-100">
+            {/* <div className="w-80 sm:w-9/12 h-auto border-2 border-slate-400 rounded-2xl shadow-xl sticky top-20 bg-slate-100"> */}
                 <div className="flex flex-row items-center gap-2 border-b-2 border-slate-400">
                     <UserCircleIcon className="size-12 fill-slate-600" />
                     <p className="text-xl">Anonymous</p>
@@ -89,7 +89,7 @@ export default function Posts(props) {
                         <b>{dislikes}</b>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     )
 }

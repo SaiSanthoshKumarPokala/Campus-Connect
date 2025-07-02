@@ -12,7 +12,7 @@
 
 @keyframes slide {
   from {
-    transform: translateX(-20vw);
+    transform: translateX(-60vw);
   }
   to {
     transform: translateX(80vw);
@@ -31,7 +31,7 @@
 
 @keyframes scroll-x {
   0% {
-      transform: translateX(0);
+      transform: translateX(0%);
   }
 
   100% {

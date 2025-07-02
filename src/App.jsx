@@ -6,23 +6,42 @@ import About from "./pages/About";
 import Problems from "./pages/Problems";
 import LostAndFound from "./pages/LostAndFound";
 import Official from "./pages/Official";
+import Login from "./pages/Login";
+import Register from "./pages/Register"
+import ProtectedRoute from "./context/ProtectedRoute";
+import AuthProvider from "./context/AuthContext";
 // import Clubs from "./pages/Clubs";
 
 function App() {
 
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/problems" element={<Problems />} />
-        <Route path="/lostandfound" element={<LostAndFound />} />
-        <Route path="/aboutus" element={<About />} />
-        {/* <Route path="/clubs" element={<Clubs />} /> */}
-        <Route path="/official" element={<Official />} />
-      </Routes>      
-      <Footer />
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<ProtectedRoute>
+            <Home />
+          </ProtectedRoute>} />
+          <Route path="/home" element={<ProtectedRoute>
+            <Home />
+          </ProtectedRoute>} />
+          <Route path="/problems" element={<ProtectedRoute>
+            <Problems />
+          </ProtectedRoute>} />
+          <Route path="/lostandfound" element={<ProtectedRoute>
+            <LostAndFound />
+          </ProtectedRoute>} />
+          <Route path="/aboutus" element={<ProtectedRoute>
+            <About />
+          </ProtectedRoute>} />
+          <Route path="/official" element={<ProtectedRoute>
+            <Official />
+          </ProtectedRoute>} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </>
   )
 }

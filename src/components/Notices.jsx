@@ -2,11 +2,11 @@
 export default function Notices() {
     return (
         <>
-            <div className="md:grid md:grid-cols-2 flex flex-col items-center gap-4 justify-center justify-items-center m-2 p-4 w-9/12 h-auto border-1 bg-slate-800 rounded-2xl text-slate-100 border-slate-300 md:sticky md:top-22 outline-2 outline-white shadow-[0_0_10px_10px_rgba(255,255,255,0.3)]">
+            <div className="md:grid md:grid-rows-2 flex flex-col items-center gap-4 justify-center justify-items-center m-2 p-4 w-11/12 md:w-5/12 h-auto border-1 bg-white/15 rounded-2xl backdrop-blur-2xl text-black border-none">
                 <div className="img">
-                    <img src="src/assets/images/Poster.png" alt="" className="h-60 md:h-70 lg:h-80 place-self-center-safe" />
+                    <img src="src/assets/images/Poster.png" alt="" className="h-60 md:h-70 lg:h-80" />
                 </div>
-                <div className="p-4 place-self-center text-slate-100">
+                <div className="p-4 place-self-center text-black">
                     What is this event?
                     <br />
                     <br />
