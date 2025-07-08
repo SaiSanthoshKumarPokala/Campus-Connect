@@ -197,7 +197,7 @@ export default function Posts(props) {
             setdislikeActive(false);
         }
         LoadData();
-        // window.location.reload();
+        window.location.reload();
 
     }
 
@@ -318,7 +318,7 @@ export default function Posts(props) {
             setlikeActive(false);
         }
         LoadData();
-        // window.location.reload();
+        window.location.reload();
     }
 
     return (
