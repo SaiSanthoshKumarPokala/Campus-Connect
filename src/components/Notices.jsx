@@ -1,12 +1,9 @@
-import Poster from "/public/poster.png"
-
-
 export default function Notices() {
     return (
         <>
             <div className="md:grid md:grid-rows-2 flex flex-col items-center gap-4 justify-center justify-items-center m-2 p-4 w-11/12 md:w-5/12 h-auto border-1 bg-white/15 rounded-2xl backdrop-blur-2xl text-black border-none">
                 <div className="img">
-                    <img src={Poster} alt="" className="h-60 md:h-70 lg:h-80" />
+                    <img src="https://storage.googleapis.com/campusconnect-iomp.firebasestorage.app/Website%20Images/Poster.png" alt="" className="h-60 md:h-70 lg:h-80" />
                 </div>
                 <div className="p-4 place-self-center text-black">
                     What is this event?

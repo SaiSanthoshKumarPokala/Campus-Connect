@@ -40,7 +40,7 @@ export default function Login() {
 
     return (
         <>
-            <div className="flex items-center min-h-10/12 justify-center m-auto text-white">
+            <div className="flex items-center min-h-dvh justify-center m-auto text-white">
                 <div className="flex m-auto w-90 md:w-6/12 items-center justify-center rounded-xl border-4 font-bold border-orange-400">
                     <form className="flex flex-col gap-1 md:gap-6 p-2 m-8">
                         <h1 className="p-2 text-2xl font-bold">Login Using Email ID and Password</h1>

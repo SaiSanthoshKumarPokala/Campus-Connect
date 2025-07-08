@@ -3,7 +3,6 @@ import { Bars3Icon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
-import Logo from "/public/logo.png"
 export default function Navbar() {
 
     const [isOpen, setisOpen] = useState(false)
@@ -37,7 +36,7 @@ export default function Navbar() {
     return (
         <>
             <nav className="flex flex-row justify-between px-4 md:px-2 py-4 md:py-0 md:justify-evenly text-center z-10 items-center-safe bg-orange-400 sticky top-0">
-                <NavLink to="/home"><img src={Logo} alt="Logo" className="w-12 sm:w-16 h-auto rounded-full" /></NavLink>
+                <NavLink to="/home"><img src="https://storage.googleapis.com/campusconnect-iomp.firebasestorage.app/Website%20Images/logo.png" alt="Logo" className="w-12 sm:w-16 h-auto rounded-full" /></NavLink>
                 {currentUser &&
                     <div className="hidden sm:p-4 md:block">
                         <ul className="flex flex-row items-center-safe list-none text-white">
@@ -55,7 +54,7 @@ export default function Navbar() {
                             <UserCircleIcon className="size-10" />
                             <p className="font-bold">Hello, {currentUser.displayName}!</p>
                         </div>
-                        <button className="p-1 my-4 hover:bg-red-700 hover:text-white bg-white m-2 cursor-pointer text-red-700 rounded-md border-2 border-red" onClick={Logout}>Logout</button>
+                        <button className="p-1 my-4 hover:bg-red-700 hover:text-white transition-colors ease-in duration-200 bg-white m-2 cursor-pointer text-red-700 rounded-md border-2 border-red" onClick={Logout}>Logout</button>
                     </div>
                 }
                 {!currentUser &&
@@ -89,7 +88,7 @@ export default function Navbar() {
                         <NavLink to="/aboutus" className={({ isActive }) => `my-2 hover:text-black ${isActive ? "underline underline-offset-4" : ""}`}>About Us</NavLink>
                         <div className="flex flex-col items-center">
                             <p className="p-2 text-lg font-bold">Hello, {currentUser.displayName}!</p>
-                            <button className="bg-white rounded-md p-1 border-2 border-black m-2 cursor-pointer text-red-700" onClick={Logout}>Logout</button>
+                            <button className="bg-white transition-colors ease-in duration-200 rounded-md p-1 border-2 border-black m-2 cursor-pointer text-red-700" onClick={Logout}>Logout</button>
                         </div>
                     </ul>
                 </div>
