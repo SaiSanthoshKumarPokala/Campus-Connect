@@ -16,9 +16,7 @@ export default function Posts(props) {
     const { currentUser } = useAuth();
 
     const LoadData = () => {
-        onSnapshot(doc(db, "Problems", props.id), (doc) => {
-            console.log("Current data: ", doc.data());
-        }); if (props.liked.includes(`${currentUser.uid}`)) {
+        if (props.liked.includes(`${currentUser.uid}`)) {
             setlikeActive(true);
         }
         else if (props.disliked.includes(`${currentUser.uid}`)) {

@@ -73,148 +73,148 @@ export default function Problems() {
     // }
 
 
-    const ToggleLike = async (e, id) => {
+    // const ToggleLike = async (e, id) => {
 
-        const ref = doc(db, `users/${currentUser.uid}/Reactions`, id);
-        const docsnap = await getDoc(ref);
+    //     const ref = doc(db, `users/${currentUser.uid}/Reactions`, id);
+    //     const docsnap = await getDoc(ref);
 
-        let liked = docsnap.data().Liked;
-        let disliked = docsnap.data().Disliked;
+    //     let liked = docsnap.data().Liked;
+    //     let disliked = docsnap.data().Disliked;
 
-        const [likeActive, setlikeActive] = useState(false);
-        const [dislikeActive, setdislikeActive] = useState(false);
+    //     const [likeActive, setlikeActive] = useState(false);
+    //     const [dislikeActive, setdislikeActive] = useState(false);
 
-        if (liked) {
-            setlikeActive(true);
-            setdislikeActive(false);
-        }
-        else if (disliked) {
-            setdislikeActive(true);
-            setlikeActive(false);
-        }
-        else {
-            setdislikeActive(false);
-            setlikeActive(false);
-        }
+    //     if (liked) {
+    //         setlikeActive(true);
+    //         setdislikeActive(false);
+    //     }
+    //     else if (disliked) {
+    //         setdislikeActive(true);
+    //         setlikeActive(false);
+    //     }
+    //     else {
+    //         setdislikeActive(false);
+    //         setlikeActive(false);
+    //     }
 
-        const Ref = doc(db, `Problems`, id);
-        const docSnap = await getDoc(Ref);
+    //     const Ref = doc(db, `Problems`, id);
+    //     const docSnap = await getDoc(Ref);
 
-        let LIKES = docSnap.data().Likes;
-        let DISLIKES = docSnap.data().Dislikes;
+    //     let LIKES = docSnap.data().Likes;
+    //     let DISLIKES = docSnap.data().Dislikes;
 
-        console.log(LIKES, DISLIKES);
+    //     console.log(LIKES, DISLIKES);
 
-        if (likeActive) {
-            setlikeActive(false);
-            LIKES > 0 ? await updateDoc(Ref, {
-                Likes: LIKES - 1,
-            }) : await updateDoc(Ref, {
-                Likes: 0,
-            });
-            setLikeActive(false);
-        }
-        else {
-            if (dislikeActive) {
-                setdislikeActive(false);
-                setlikeActive(true);
-                await updateDoc(Ref, {
-                    Likes: LIKES + 1,
-                });
-                DISLIKES > 0 ? await updateDoc(Ref, {
-                    Disikes: DISLIKES - 1,
-                }) : await updateDoc(Ref, {
-                    Dislikes: 0,
-                });
-                setDislikeActive(false);
-                setLikeActive(true);
-            }
-            else {
-                setlikeActive(true);
-                await updateDoc(Ref, {
-                    Likes: LIKES + 1,
-                });
-                setLikeActive(true);
-            }
-        }
-        fetchData();
-    }
+    //     if (likeActive) {
+    //         setlikeActive(false);
+    //         LIKES > 0 ? await updateDoc(Ref, {
+    //             Likes: LIKES - 1,
+    //         }) : await updateDoc(Ref, {
+    //             Likes: 0,
+    //         });
+    //         setLikeActive(false);
+    //     }
+    //     else {
+    //         if (dislikeActive) {
+    //             setdislikeActive(false);
+    //             setlikeActive(true);
+    //             await updateDoc(Ref, {
+    //                 Likes: LIKES + 1,
+    //             });
+    //             DISLIKES > 0 ? await updateDoc(Ref, {
+    //                 Disikes: DISLIKES - 1,
+    //             }) : await updateDoc(Ref, {
+    //                 Dislikes: 0,
+    //             });
+    //             setDislikeActive(false);
+    //             setLikeActive(true);
+    //         }
+    //         else {
+    //             setlikeActive(true);
+    //             await updateDoc(Ref, {
+    //                 Likes: LIKES + 1,
+    //             });
+    //             setLikeActive(true);
+    //         }
+    //     }
+    //     fetchData();
+    // }
 
-    const ToggleDisLike = async (e, id) => {
+    // const ToggleDisLike = async (e, id) => {
 
-        // const Ref = doc(db, `users/${currentUser.uid}/Todos`, id);
-        // const docSnap = await getDoc(Ref);
+    //     // const Ref = doc(db, `users/${currentUser.uid}/Todos`, id);
+    //     // const docSnap = await getDoc(Ref);
 
-        // let value = docSnap.data().isCompleted;
-        // await updateDoc(Ref, {
-        //     isCompleted: !value,
-        // });
+    //     // let value = docSnap.data().isCompleted;
+    //     // await updateDoc(Ref, {
+    //     //     isCompleted: !value,
+    //     // });
 
-        const ref = doc(db, `users/${currentUser.uid}/Reactions`, id);
-        const docsnap = await getDoc(ref);
+    //     const ref = doc(db, `users/${currentUser.uid}/Reactions`, id);
+    //     const docsnap = await getDoc(ref);
 
-        let liked = docsnap.data().Liked;
-        let disliked = docsnap.data().Disliked;
+    //     let liked = docsnap.data().Liked;
+    //     let disliked = docsnap.data().Disliked;
 
 
-        const [likeActive, setlikeActive] = useState(false);
-        const [dislikeActive, setdislikeActive] = useState(false);
+    //     const [likeActive, setlikeActive] = useState(false);
+    //     const [dislikeActive, setdislikeActive] = useState(false);
 
-        if (liked) {
-            setlikeActive(true);
-            setdislikeActive(false);
-        }
-        else if (disliked) {
-            setdislikeActive(true);
-            setlikeActive(false);
-        }
-        else {
-            setdislikeActive(false);
-            setlikeActive(false);
-        }
+    //     if (liked) {
+    //         setlikeActive(true);
+    //         setdislikeActive(false);
+    //     }
+    //     else if (disliked) {
+    //         setdislikeActive(true);
+    //         setlikeActive(false);
+    //     }
+    //     else {
+    //         setdislikeActive(false);
+    //         setlikeActive(false);
+    //     }
 
-        const Ref = doc(db, `Problems`, id);
-        const docSnap = await getDoc(Ref);
+    //     const Ref = doc(db, `Problems`, id);
+    //     const docSnap = await getDoc(Ref);
 
-        let LIKES = docSnap.data().Likes;
-        let DISLIKES = docSnap.data().Dislikes;
+    //     let LIKES = docSnap.data().Likes;
+    //     let DISLIKES = docSnap.data().Dislikes;
 
-        console.log(LIKES, DISLIKES);
+    //     console.log(LIKES, DISLIKES);
 
-        if (dislikeActive) {
-            setdislikeActive(false);
-            DISLIKES > 0 ? await updateDoc(Ref, {
-                Disikes: DISLIKES - 1,
-            }) : await updateDoc(Ref, {
-                Dislikes: 0,
-            });
-            setDislikeActive(false)
-        }
-        else {
-            if (likeActive) {
-                setlikeActive(false);
-                setdislikeActive(true);
-                await updateDoc(Ref, {
-                    Dislikes: DISLIKES + 1,
-                });
-                LIKES > 0 ? await updateDoc(Ref, {
-                    Likes: LIKES - 1,
-                }) : await updateDoc(Ref, {
-                    Likes: 0,
-                });
-                setLikeActive(false)
-                setDislikeActive(true)
-            }
-            else {
-                setdislikeActive(true);
-                await updateDoc(Ref, {
-                    Dislikes: DISLIKES + 1,
-                });
-                setDislikeActive(true)
-            }
-        }
-        fetchData();
-    }
+    //     if (dislikeActive) {
+    //         setdislikeActive(false);
+    //         DISLIKES > 0 ? await updateDoc(Ref, {
+    //             Disikes: DISLIKES - 1,
+    //         }) : await updateDoc(Ref, {
+    //             Dislikes: 0,
+    //         });
+    //         setDislikeActive(false)
+    //     }
+    //     else {
+    //         if (likeActive) {
+    //             setlikeActive(false);
+    //             setdislikeActive(true);
+    //             await updateDoc(Ref, {
+    //                 Dislikes: DISLIKES + 1,
+    //             });
+    //             LIKES > 0 ? await updateDoc(Ref, {
+    //                 Likes: LIKES - 1,
+    //             }) : await updateDoc(Ref, {
+    //                 Likes: 0,
+    //             });
+    //             setLikeActive(false)
+    //             setDislikeActive(true)
+    //         }
+    //         else {
+    //             setdislikeActive(true);
+    //             await updateDoc(Ref, {
+    //                 Dislikes: DISLIKES + 1,
+    //             });
+    //             setDislikeActive(true)
+    //         }
+    //     }
+    //     fetchData();
+    // }
 
 
     return (
