@@ -9,7 +9,7 @@ export default function ChatBot() {
     const [query, setQuery] = useState("");
     const [queries, setQueries] = useState([]);
     const [answers, setAnswers] = useState([{ answer: "Yes" }]);
-    const QA = [["Is the college good?", "Yes, it is very good."], ["Do clubs function well?", "Yeah, there are many clubs that function so good."]];
+    const QA = [["Whom should I contact in case of an emergency at JNTUH?", " In case of an emergency at JNTUH:Campus Security: 040-2315 7163 (24/7, Admin Building Ground Floor)Health Centre: 040-2315 7231 (9 AM–5 PM, near Academic Block)"], ["Where is the JNTUH Auditorium located?", "The JNTUH Auditorium is used for convocations, cultural events, and large gatherings. Location:https://maps.app.goo.gl/o9AdEqEejRMq4rdy5"]];
     // const Ans = ["Yes, it is very good.","Yeah, there are many clubs that function so good."];
 
     const handleChange = (e) => {
