@@ -1,25 +1,42 @@
-# Campus Connect
-Follow the steps below to run this project in your local machine.
+# Campus Connect – Local Setup Guide
 
-## Step 1
+Follow the steps below to run this project on your local machine.
 
-- Follow the steps in this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to clone this repository.
+---
 
-## Step 2
+### Step 1: Clone the Repository
 
-Open command prompt in the directory where you cloned and follow the below:
+- Click the link below to learn how to clone a GitHub repository:  
+  [How to Clone a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
-- Installing all the packages listed as dependencies and devDependencies within the package.json file into the node_modules folder.
+---
 
-> npm i
+### Step 2: Install Dependencies
 
-Or
+- Open your **Command Prompt** or **terminal** in the project directory (where you cloned the repo).
 
-> npm install
+- Run one of the following commands to install all required packages from `package.json`:
 
+```bash
+npm install
+```
+or
+```bash
+npm i
+```
 
-## Step 3
+---
 
-Once installation is done without errors (You can ignore the warnings), run the folloeing command.
+### Step 3: Run the Development Server
 
-> npm run dev
+- Once the installation completes without errors (you may ignore any warnings), start the development server:
+
+```bash
+npm run dev
+```
+
+- After running the above command, you'll get a **localhost** link in the terminal (usually something like `http://localhost:5173` or `http://localhost:3000`).
+
+- Open that link in your browser to view the project.
+
+---
