@@ -2,34 +2,66 @@ import { useEffect, useState, Useref, useRef } from "react";
 import Posts from "../components/Post";
 import { PaperAirplaneIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { v4 as uuidv4 } from 'uuid';
-import { UserCircleIcon, HandThumbUpIcon, HandThumbDownIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid"
-import { collection, updateDoc, doc, setDoc, getDocs, getDoc } from "firebase/firestore";
+// import { UserCircleIcon, HandThumbUpIcon, HandThumbDownIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid"
+import { collection, updateDoc, doc, setDoc, getDocs, getDoc, query, where, onSnapshot, orderBy, or } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
-import { useAuth } from "../../hooks/useAuth";
+// import { useAuth } from "../../hooks/useAuth";
 
 
 export default function Problems() {
 
-
     const verref = useRef(null);
-
     const [rollno, setRollno] = useState("");
     const [problems, setproblems] = useState([]);
     const [category, setCategory] = useState("Hostel")
     const [problem, setproblem] = useState("");
     const [likes, setlikes] = useState(0);
     const [dislikes, setdislikes] = useState(0);
-    const { currentUser } = useAuth();
     const [liked, setLiked] = useState([]);
     const [disliked, setDisliked] = useState([]);
-    const [LikeActive, setLikeActive] = useState(false);
-    const [DislikeActive, setDislikeActive] = useState(false);
+    // const { currentUser } = useAuth();
+    // const [LikeActive, setLikeActive] = useState(false);
+    // const [DislikeActive, setDislikeActive] = useState(false);
+    const [categories, setCategories] = useState([]);
 
+
+    const problemsRef = collection(db, "Problems");
 
     const fetchData = async () => {
-        const ProblemsSnapshot = await getDocs(collection(db, "Problems"));
+        const q = query(problemsRef, orderBy("Likes", "desc"), orderBy("Dislikes", "asc"));
+        const ProblemsSnapshot = await getDocs(q);
         setproblems(ProblemsSnapshot.docs);
-        console.log("Problems:", problems);
+    }
+    console.log("Problems:", problems);
+
+
+    // const saveToLS = () => {
+    //     localStorage.setItem("Categories", JSON.stringify(categories));
+    // }
+
+    // useEffect(()=>{
+    //     const CategoryString = localStorage.getItem("Categories");
+    //     if(CategoryString){
+    //         const Category = JSON.parse(localStorage.getItem("Categories"));
+    //         console.log(Category)
+    //         setCategories(Category);
+    //     }
+    // },[])
+
+    useEffect(() => {
+        fetchSpecificData();
+    }, [categories]);
+
+    const fetchSpecificData = async () => {
+        if (categories.length > 0) {
+            const q = query(problemsRef, where('Category', 'in', categories), orderBy("Likes", "desc"), orderBy("Dislikes", "asc"));
+            const querySnapshot = await getDocs(q);
+            setproblems(querySnapshot.docs);
+            console.log(problems);
+        }
+        else if (categories.length == 0 || categories.length == 5) {
+            fetchData();
+        }
     }
 
     useEffect(() => {
@@ -61,6 +93,26 @@ export default function Problems() {
         // setproblems([...problems, { id: uuidv4(), problem: problem, category: category, likes: likes, dislikes: dislikes }]);
         setproblem("");
         console.log(problems)
+    }
+
+    const selectCategory = (e) => {
+        if (categories.includes(e.target.value)) {
+            console.log("ALready there");
+            const newCategories = categories.filter(ele => {
+                return ele !== e.target.value;
+            })
+            setCategories(newCategories);
+        } else {
+            console.log("Not there");
+            setCategories([...categories, e.target.value]);
+        }
+        // saveToLS();
+        console.log("Categories: ", categories);
+    }
+
+    const check = (e) => {
+        // e.target.checked=!e.target.checked;
+        // console.log(e.target.checked);
     }
 
 
@@ -229,20 +281,24 @@ export default function Problems() {
                             </div>
                             <form className="grid grid-cols-1 gap-4 text-xl">
                                 <div className="flex items-center gap-2 accent-white focus:outline-2 outline-offset-2 outline-black">
-                                    <input type="checkbox" name="Administration" className="size-6" value="Administration" id="Administration" />
+                                    <input type="checkbox" name="Administration" className="size-6" value="Administration" id="Administration" checked={check()} onChange={selectCategory} />
                                     <label htmlFor="Administration">Administration</label>
                                 </div>
                                 <div className="flex items-center gap-2 accent-white focus:outline-2 outline-offset-2 outline-black">
-                                    <input type="checkbox" name="Library" className="size-6" value="Library" id="Library" />
+                                    <input type="checkbox" name="Library" className="size-6" value="Library" id="Library" checked={check()} onChange={selectCategory} />
                                     <label htmlFor="Library">Library</label>
                                 </div>
                                 <div className="flex items-center gap-2 accent-white focus:outline-2 outline-offset-2 outline-black">
-                                    <input type="checkbox" name="Hostel" className="size-6" value="Hostel" id="Hostel" />
+                                    <input type="checkbox" name="Hostel" className="size-6" value="Hostel" id="Hostel" checked={check()} onChange={selectCategory} />
                                     <label htmlFor="Hostel">Hostel</label>
                                 </div>
                                 <div className="flex items-center gap-2 accent-white focus:outline-2 outline-offset-2 outline-black">
-                                    <input type="checkbox" name="Department" className="size-6" value="Department" id="Department" />
+                                    <input type="checkbox" name="Department" className="size-6" value="Department" id="Department" checked={check()} onChange={selectCategory} />
                                     <label htmlFor="Department">Department</label>
+                                </div>
+                                <div className="flex items-center gap-2 accent-white focus:outline-2 outline-offset-2 outline-black">
+                                    <input type="checkbox" name="Others" className="size-6" value="Others" id="Others" checked={check()} onChange={selectCategory} />
+                                    <label htmlFor="Others">Others</label>
                                 </div>
                             </form>
                         </div>
@@ -295,6 +351,7 @@ export default function Problems() {
                             <option value="Library">Library</option>
                             <option value="Hostel">Hostel</option>
                             <option value="Department">Department</option>
+                            <option value="Others">Others</option>
                         </select>
                     </div>
                     <div className="flex flex-row gap-2 m-2 items-center justify-center min-w-8/12 max-w-10/12 max-h-20 md:max-w-9/12">

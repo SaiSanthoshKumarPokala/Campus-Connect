@@ -10,7 +10,6 @@ export default function Posts(props) {
 
     const [likeActive, setlikeActive] = useState(false);
     const [dislikeActive, setdislikeActive] = useState(false);
-    const [reactions, setReactions] = useState([]);
     const [likes, setlikes] = useState(props.likes);
     const [dislikes, setdislikes] = useState(props.dislikes);
     const { currentUser } = useAuth();
@@ -28,7 +27,7 @@ export default function Posts(props) {
 
     useEffect(() => {
         LoadData();
-    }, [])
+    }, [likes,dislikes])
 
     // useEffect(() => {
     //     let savedReactions = localStorage.getItem("Reactions");
@@ -282,9 +281,9 @@ export default function Posts(props) {
         let LIKED = docSnap.data().Liked;
         let DISLIKED = docSnap.data().Disliked;
         if (!likeActive && !dislikeActive) {
-            console.log(DISLIKED);
             DISLIKED.push(`${currentUser.uid}`);
-            console.log(DISLIKED);
+            // console.log(DISLIKED);
+            // console.log(DISLIKED);
             await updateDoc(Ref, {
                 Dislikes: DISLIKES + 1,
                 Disliked: DISLIKED,
@@ -292,9 +291,9 @@ export default function Posts(props) {
             setdislikeActive(true);
         }
         else if (dislikeActive) {
-            console.log(DISLIKED);
             DISLIKED.pop(`${currentUser.uid}`);
-            console.log(DISLIKED);
+            // console.log(DISLIKED);
+            // console.log(DISLIKED);
             await updateDoc(Ref, {
                 Dislikes: DISLIKES - 1,
                 Disliked: DISLIKED,
@@ -302,10 +301,10 @@ export default function Posts(props) {
             setdislikeActive(false);
         }
         else if (likeActive) {
-            console.log(LIKED);
             LIKED.pop(`${currentUser.uid}`);
             DISLIKED.push(`${currentUser.uid}`);
-            console.log(LIKED);
+            // console.log(LIKED);
+            // console.log(LIKED);
             await updateDoc(Ref, {
                 Dislikes: DISLIKES + 1,
                 Liked: LIKED,
@@ -327,6 +326,9 @@ export default function Posts(props) {
             </div>
             <div className="text-left place-content-center min-h-40 p-4 whitespace-pre-line">
                 {props.Content}
+            </div>
+            <div className="text-left place-content-center px-4 py-2 flex gap-2 items-center justify-start">
+                <p className="text-gray-700 font-bold text-sm italic underline underline-offset-1">Category: </p>{props.category}
             </div>
             <div className="reactions flex flex-row gap-6 sm:gap-10 items-center justify-center m-auto border-t-2 border-slate-300">
                 <div className="flex flex-row items-center gap-1">

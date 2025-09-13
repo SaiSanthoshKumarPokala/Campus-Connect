@@ -9,7 +9,7 @@ export default function ChatBot() {
     const [query, setQuery] = useState("");
     const [queries, setQueries] = useState([]);
     const [answers, setAnswers] = useState([{ answer: "Yes" }]);
-    const QA = [["Whom should I contact in case of an emergency at JNTUH?", " In case of an emergency at JNTUH:Campus Security: 040-2315 7163 (24/7, Admin Building Ground Floor)Health Centre: 040-2315 7231 (9 AM–5 PM, near Academic Block)"], ["Where is the JNTUH Auditorium located?", "The JNTUH Auditorium is used for convocations, cultural events, and large gatherings. Location:https://maps.app.goo.gl/o9AdEqEejRMq4rdy5"]];
+    const QA = [["Whom should I contact in case of an emergency at JNTUH?", " In case of an emergency at JNTUH: \nCampus Security: 040-2315 7163 (24/7, Admin Building Ground Floor) \nHealth Centre: 040-2315 7231 (9 AM - 5 PM, near Academic Block)"], ["Where is the JNTUH Auditorium located?", "The JNTUH Auditorium is used for convocations, cultural events, and large gatherings. \nLocation: https://maps.app.goo.gl/o9AdEqEejRMq4rdy5"]];
     // const Ans = ["Yes, it is very good.","Yeah, there are many clubs that function so good."];
 
     const handleChange = (e) => {
@@ -46,19 +46,19 @@ export default function ChatBot() {
                                 QA.map(item => {
                                     return (
                                         <>
-                                            <div className="flex flex-row items-center">
-                                                <UserCircleIcon className="size-6" />
-                                                <div className="bg-white rounded-md w-10/12 m-1 p-2">
+                                            <div className="flex flex-row items-start">
+                                                <UserCircleIcon className="size-6 my-2" />
+                                                <div className="bg-white rounded-md w-10/12 m-1 p-2 text-wrap whitespace-pre-wrap wrap-anywhere">
                                                     {item[0]}
                                                 </div>
                                             </div>
-                                            <div className="flex flex-row-reverse items-center">
+                                            <div className="flex flex-row-reverse items-start">
                                                 <img
                                                     src="https://storage.googleapis.com/campusconnect-iomp.firebasestorage.app/Website%20Images/Bot.jpg"
                                                     alt="Chatbot"
-                                                    className="rounded-full brightness-150 size-6"
+                                                    className="rounded-full brightness-150 size-6 my-2"
                                                 />
-                                                <div className="bg-white rounded-md w-10/12 m-1 p-2">
+                                                <div className="bg-white rounded-md w-10/12 m-1 p-2 text-wrap whitespace-pre-wrap wrap-anywhere">
                                                     {item[1]}
                                                 </div>
                                             </div>
@@ -82,7 +82,7 @@ export default function ChatBot() {
                             })} */}
                         </div>
                         <div className="sticky bottom-0 text-center flex flex-row items-center justify-center gap-2 rounded-b-xl bg-white p-2">
-                            <textarea name="Userquery" placeholder="Ask it" id="Userquery" value={query} className="p-2 text-xl focus:outline-2 focus:bg-white focus:outline-orange-400 resize-none field-sizing-content rounded-md border-2 border-amber-300 max-h-20 min-w-8/12" onChange={handleChange}></textarea>
+                            <textarea name="Userquery" placeholder="Ask it" id="Userquery" value={query} className="p-2 focus:outline-2 focus:bg-white focus:outline-orange-400 resize-none field-sizing-content rounded-md border-2 border-amber-300 max-h-20 min-w-8/12" onChange={handleChange}></textarea>
                             <button type="submit" onClick={Ask}>
                                 <PaperAirplaneIcon className="cursor-pointer fill-white outline-black size-8 hover:fill-blue-400" />
                             </button>

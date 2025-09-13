@@ -1,11 +1,11 @@
 export default function Notices() {
     return (
         <>
-            <div className="md:grid md:grid-rows-2 flex flex-col items-center gap-4 justify-center justify-items-center m-2 p-4 w-11/12 md:w-5/12 h-auto border-1 bg-white/15 rounded-2xl backdrop-blur-2xl text-black border-none">
-                <div className="img">
-                    <img src="https://storage.googleapis.com/campusconnect-iomp.firebasestorage.app/Website%20Images/Poster.png" alt="" className="h-60 md:h-70 lg:h-80" />
+            <div className="md:grid flex flex-col items-center gap-4 justify-center justify-items-center m-2 p-4 w-10/12 h-auto border-1 bg-white/10 rounded-2xl backdrop-blur-2xl text-black border-none">
+                <div className="m-auto">
+                    <img src="https://storage.googleapis.com/campusconnect-iomp.firebasestorage.app/Website%20Images/Poster.png" alt="" className="w-11/12 h-auto m-auto rounded-2xl" />
                 </div>
-                <div className="p-4 place-self-center text-black">
+                <div className="p-4 place-self-center text-white">
                     What is this event?
                     <br />
                     <br />
@@ -17,7 +17,7 @@ export default function Notices() {
                     <br />
                     Poems and artwork will be provided on Sunday for you to work on! Get ready!
                     <br />
-                    <a className="text-blue-500 underline underline-offset-2 hover:text-white" href="https://www.instagram.com/p/DHv1aC-B3HV/?igsh=ajFuajF5NG1ubmJo">Click here to know more</a>
+                    <a className="text-blue-300 underline underline-offset-2 hover:text-white" href="https://www.instagram.com/p/DHv1aC-B3HV/?igsh=ajFuajF5NG1ubmJo">Click here to know more</a>
                 </div>
             </div>
         </>

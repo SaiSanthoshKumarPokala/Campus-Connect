@@ -7,7 +7,7 @@ import ChatBot from "../components/Chatbot";
 export default function Home() {
     return (
         <>
-            <title>Home</title>
+            <title>Home | Campus Connect</title>
             <img src="https://storage.googleapis.com/campusconnect-iomp.firebasestorage.app/Website%20Images/bg.jpeg" alt="" className="fixed h-dvh w-[2000px] object-cover md:object-fill md:w-dvw md:h-auto opacity-50 blur-xs" />
             <div className="min-h-dvh relative flex flex-col items-center gap-4">
                 <div className="border-2 border-orange-500 p-2 mt-2 w-9/12 rounded-md bg-black overflow-hidden transition-all">
@@ -20,22 +20,23 @@ export default function Home() {
                 {/* <div className="m-auto my-2 w-52 h-52 border-2 border-amber-300 text-center content-center"></div> */}
                 {/* <Carousel/> */}
                 <section className="flex flex-col items-center gap-6">
-                    <p className="font-serif md:text-4xl text-3xl text-orange-500 font-bold text-center">Upcoming events</p>
-                    <div className="flex flex-row items-center justify-center flex-wrap">
+                    <p className="font-serif md:text-4xl text-3xl text-white font-bold text-center">Upcoming events</p>
+                    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center">
+                        <Notices />
                         <Notices />
                         <Notices />
                     </div>
                 </section>
-                <section className="flex flex-col items-center gap-6">
-                    <p className="font-serif md:text-4xl text-3xl text-orange-500 font-bold text-center">Past events</p>
-                    <div className="flex flex-row items-center justify-center flex-wrap">
+                <section className="flex flex-col items-center gap-6 mt-10">
+                    <p className="font-serif md:text-4xl text-3xl text-white font-bold text-center">Past events</p>
+                    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center">
                         <Notices />
                         <Notices />
                     </div>
                 </section>
 
                 <div className="my-4 py-4 px-0 w-11/12 md:w-10/12 rounded-md bg-white/30 backdrop-blur-lg text-black">
-                    <h1 className="text-2xl md:text-4xl font-bold text-center mb-2">
+                    <h1 className="text-2xl md:text-4xl font-bold text-center mb-2 text-white">
                         Latest Official Notifications
                     </h1>
                     <table className="w-11/12 m-auto mt-2 border-4 border-white table-fixed border-separate">
