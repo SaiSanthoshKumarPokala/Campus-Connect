@@ -25,3 +25,4 @@ firebaseConfig.js
 *.sw?
 .firebase
 
+firebaseConfig.js
